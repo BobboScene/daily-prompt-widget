@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Daily Creative Prompt</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #f7f6f3;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                   Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .prompt {
+      font-size: 2rem;
+      color: #2b2b2b;
+      letter-spacing: 0.02em;
+      text-align: center;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="prompt" id="prompt"></div>
+
+  <script>
+    const prompts = [
+      "seagull","web","paper","spots","stripes","bear","button","snowflake",
+      "slug","marble","whistle","brush","sour","sweet","ghost","rain","daisy",
+      "sparkle","sketch","bud","river","wheel","cape","lamp","slow","fast",
+      "fight","flight","freeze","rest","bath","village","party","celebration",
+      "backpack","crown","radish","cosmos","pencil","posca","paint","ink",
+      "lino","relief","collage","message","wand","pond","float","spooky",
+      "candle","weather","ship","nest","snooze","rave","old folks","old",
+      "young","new","fresh","grub","sprig","blue","citrus","field","sickness",
+      "globe","puppet","theatre","robot","pet","spaceship","lovers",
+      "potion","cowboy","tiger","bow","trees","mask","costume","lantern",
+      "tail","goblin","creature","pixie","fairy","monster","beast","wings",
+      "boot","gold","bronze","two colours","orange","yellow","green","rust",
+      "bottle","beer can","heart","bird","beetle","submarine","toast","scout",
+      "treasure","jar","match","uniform","sound","thunder","treehouse","fall",
+      "rise","phoenix","hand","home","bridge","foam","glow","carton","burn",
+      "hat","bloom","fossil","moon","shadow","pie","core","bugs","sword",
+      "fish","snail","pattern","soda","stars","museum","boat","shelter",
+      "loot","clover","flame","seat","lost","where are you going?","madness",
+      "faith","glee","lines","dots","squares","twinkle","eye","haunt",
+      "morning","socks","tiny house","you","outfit","comic","a room",
+      "your favourite scene from a film","animal","group","inanimate object",
+      "a good tune","vending machine","tower"
+    ];
+
+    function getDailyPrompt() {
+      const today = new Date().toISOString().slice(0, 10);
+      let hash = 0;
+      for (let i = 0; i < today.length; i++) {
+        hash = today.charCodeAt(i) + ((hash << 5) - hash);
+      }
+      return prompts[Math.abs(hash) % prompts.length];
+    }
+
+    document.getElementById("prompt").textContent = getDailyPrompt();
+  </script>
+</body>
+</html>
