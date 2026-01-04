@@ -11,27 +11,50 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
-                 Helvetica, Arial, sans-serif;
+    font-family: Georgia, "Times New Roman", serif;
 
-    background-image: url("prompt background.png");
+    background-image:
+      linear-gradient(
+        rgba(10, 30, 55, 0.55),
+        rgba(10, 30, 55, 0.55)
+      ),
+      url("prompt background.png");
+
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
   }
 
-  .prompt {
-    color: #ffffff;
-    font-size: 2rem;
-    text-align: center;
-    letter-spacing: 0.03em;
-    padding: 2rem;
-    max-width: 80%;
+  /* soft vignette */
+  body::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+      circle at center,
+      rgba(0,0,0,0) 40%,
+      rgba(0,0,0,0.35) 100%
+    );
+    pointer-events: none;
+  }
 
-    /* subtle readability boost */
-    text-shadow: 0 2px 8px rgba(0,0,0,0.35);
+  .prompt {
+    position: relative;
+    color: #f5f6f7;
+    font-size: 2.1rem;
+    text-align: center;
+    letter-spacing: 0.04em;
+    padding: 2.5rem;
+    max-width: 80%;
+    line-height: 1.35;
+
+    /* ink-like softness */
+    text-shadow:
+      0 1px 2px rgba(0,0,0,0.35),
+      0 6px 20px rgba(0,0,0,0.25);
   }
 </style>
+
 
 </head>
 <body>
